@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="internalLoginDialogActive" max-width="500px">
+  <v-dialog v-model="_show" max-width="500px">
     <v-card>
       <v-card-title>
         <span>Dialog 3</span>
@@ -16,18 +16,30 @@
         </v-menu>
       </v-card-title>
       <v-card-actions>
-        <v-btn color="primary" flat @click.stop="internalLoginDialogActive=false">Close</v-btn>
+        <v-btn color="primary" flat @click.stop="show = false">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+    // TODO: MAKE LOGIN DIALOG GREAT AGAIN (Do it so it works)
     export default {
-      props: ['loginDialogActive'],
+      props: ['value'],
       data () {
         return {
-          internalLoginDialogActive: this.loginDialogActive
+          _show: this.value
+        }
+      },
+      computed: {
+        show: {
+          set (value) {
+            this._show = value
+            this.$emit('input', value)
+          },
+          get () {
+            return this._show
+          }
         }
       },
       name: 'login-dialog'

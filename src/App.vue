@@ -53,7 +53,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <login-dialog absolute temporary :login-dialog-active="loginDialog" />
+    <login-dialog absolute temporary :value="loginDialog" />
     <v-content>
       <v-container fluid>
         <router-view></router-view>
@@ -79,7 +79,7 @@
           }
         ],
         navBarActive: false,
-        loginDialog: false
+        loginDialog: true
       }
     },
     components: { LoginDialog },

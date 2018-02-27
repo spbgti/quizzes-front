@@ -1,23 +1,31 @@
 <template>
   <v-card>
     <v-card-title>
-      <h3>{{ title }}</h3>
+      <h3 class="text--secondary">{{ title }}</h3>
+      <v-spacer/>
+      <v-btn flat icon @click="listOpened = !listOpened">
+        <v-icon v-if="listOpened = false">
+          keyboard_arrow_down
+        </v-icon>
+        <v-icon v-else @click="listOpened = !listOpened">
+          keyboard_arrow_up
+        </v-icon>
+      </v-btn>
     </v-card-title>
     <v-card-actions>
       <!-- Test Completed Item -->
-      <!-- Test Pending Item -->
-      <list-item-pending />
+      <list-item-completed/>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
-  import ListItemPending from '@/components/profile/ListItemPending'
+  import ListItemCompleted from '@/components/profile/ListItemCompleted'
 
   export default {
     props: ['title'],
-    name: 'user-test-list',
-    components: { ListItemPending }
+    name: 'completed-test-list',
+    components: { ListItemCompleted }
   }
 </script>
 
