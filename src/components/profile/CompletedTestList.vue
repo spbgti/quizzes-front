@@ -1,30 +1,40 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <h3 class="text--secondary">{{ title }}</h3>
-      <v-spacer/>
-      <v-btn flat icon @click="listOpened = !listOpened">
-        <v-icon v-if="listOpened = false">
-          keyboard_arrow_down
-        </v-icon>
-        <v-icon v-else @click="listOpened = !listOpened">
-          keyboard_arrow_up
-        </v-icon>
-      </v-btn>
-    </v-card-title>
-    <v-card-actions>
+  <v-expansion-panel>
+    <v-expansion-panel-content>
+      <h3 class="text--secondary" slot="header">Результаты</h3>
       <!-- Test Completed Item -->
-      <list-item-completed/>
-    </v-card-actions>
-  </v-card>
+      <v-card>
+        <v-card-actions>
+          <v-layout v-for="item in dataList" :key="item.title">
+            <list-item-completed :title="item.title"
+                                 :percentage="item.percentage"
+                                 :description="item.description"/>
+          </v-layout>
+        </v-card-actions>
+      </v-card>
+    </v-expansion-panel-content>
+  </v-expansion-panel>
 </template>
 
 <script>
   import ListItemCompleted from '@/components/profile/ListItemCompleted'
 
   export default {
-    props: ['title'],
     name: 'completed-test-list',
+    data () {
+      return {
+        //  TODO: REQUEST DATA HERE
+        dataList: [
+          {
+            title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga fugiat ipsa necessitatibus obcaecati placeat ratione suscipit. ' +
+            'Deserunt dolor eius facilis ipsam, iure, nisi numquam optio placeat quam, sit tempore vitae',
+            percentage: 22,
+            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+            'Deserunt dolor eius facilis ipsam, iure, nisi numquam optio placeat quam, sit tempore vitae'
+          }
+        ]
+      }
+    },
     components: { ListItemCompleted }
   }
 </script>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # quizzers
 
 > A Vue.js project
@@ -31,4 +30,3 @@ npm test
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 =======
 # quizzes-front
->>>>>>> 9b9b06de0e3993227f1fc0ee99b53f4d1559a792

@@ -1,22 +1,19 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <h3 class="text--secondary">{{ title }}</h3>
-      <v-spacer/>
-      <v-btn flat icon @click="listOpened = !listOpened">
-        <v-icon v-if="listOpened = false">
-          keyboard_arrow_down
-        </v-icon>
-        <v-icon v-else @click="listOpened = !listOpened">
-          keyboard_arrow_up
-        </v-icon>
-      </v-btn>
-    </v-card-title>
-    <v-card-actions>
-      <!-- Test Pending Item -->
-        <list-item-pending />
-    </v-card-actions>
-  </v-card>
+  <v-expansion-panel expand>
+    <v-expansion-panel-content>
+      <h3 slot="header" class="text--secondary">Активные тесты</h3>
+      <v-card>
+        <v-card-actions>
+          <!-- Test Pending Item -->
+          <v-layout v-for="item in dataList" :key="item.title"> <!-- TODO: Redo keys -->
+            <list-item-pending :title="item.title"
+                               :percentage="item.percentage"
+                               :description="item.description" />
+          </v-layout>
+        </v-card-actions>
+      </v-card>
+    </v-expansion-panel-content>
+  </v-expansion-panel>
 </template>
 
 <script>
@@ -26,6 +23,16 @@
     props: ['title'],
     data () {
       return {
+        //  TODO: REQUEST DATA HERE
+        dataList: [
+          {
+            title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga fugiat ipsa necessitatibus obcaecati placeat ratione suscipit. ' +
+                   'Deserunt dolor eius facilis ipsam, iure, nisi numquam optio placeat quam, sit tempore vitae',
+            percentage: 22,
+            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+                         'Deserunt dolor eius facilis ipsam, iure, nisi numquam optio placeat quam, sit tempore vitae'
+          }
+        ],
         listOpened: true
       }
     },

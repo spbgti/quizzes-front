@@ -4,7 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import VueResource from 'vue-resource'
 import 'vuetify/dist/vuetify.min.css'
+
+Vue.use(VueResource)
 
 Vue.use(Vuetify, { theme: {
   primary: '#EF6C00',

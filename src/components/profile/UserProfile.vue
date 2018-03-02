@@ -3,21 +3,21 @@
     <v-layout>
       <v-flex xs12>
         <!-- User Dashboard Controller -->
-        <account-dashboard />
+        <account-dashboard :flatness="false" class="hidden-xs-only" />
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs12 md6 class="px-1 py-2">
+      <v-flex xs12 md6 class="pr-1 py-2">
         <!-- User Test Pending -->
-        <pending-test-list title="Активные тесты" />
+        <pending-test-list  />
       </v-flex>
-      <v-flex xs12 md6 class="px-1 py-2 hidden-xs-only">
+      <v-flex xs12 md6 class="pl-1 py-2 hidden-xs-only">
         <!-- User Test Completed -->
-        <completed-test-list title="Результаты тестов" />
+        <completed-test-list  />
       </v-flex>
     </v-layout>
     <v-layout class="hidden-sm-and-up" row>
-        <v-flex xs12 md6 class="px-1 py-2">
+        <v-flex xs12 md6 class="py-2">
         <!-- User Test Completed -->
         <completed-test-list title="Результаты тестов" />
       </v-flex>

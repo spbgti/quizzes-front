@@ -10,7 +10,7 @@
       </v-toolbar-title>
       <v-spacer/>
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn v-if="loggedIn === false" flat @click.stop="loginDialog = !loginDialog">
+        <v-btn v-if="loggedIn === false" flat @click.prevent="loginDialog = !loginDialog">
           <v-icon left>assignment_turned_in</v-icon>
           Login
         </v-btn>
@@ -34,6 +34,7 @@
         </v-list>
       </v-toolbar>
       <v-divider />
+      <account-dashboard :flatness="true" v-if="loggedIn" />
       <v-list dark class="orange darken-1 ">
         <v-list-tile v-if="loggedIn === false" class="mx-3" @click.stop="loginDialog = !loginDialog">
           <v-list-tile-action>
@@ -53,8 +54,8 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <login-dialog absolute temporary :value="loginDialog" />
     <v-content>
+      <login-dialog absolute :window="loginDialog"/>
       <v-container fluid>
         <router-view></router-view>
       </v-container>
@@ -64,6 +65,7 @@
 
 <script>
   import LoginDialog from '@/components/LoginDialog'
+  import AccountDashboard from '@/components/profile/AccountDashboard'
 
   export default {
     data () {
@@ -82,7 +84,7 @@
         loginDialog: true
       }
     },
-    components: { LoginDialog },
+    components: { LoginDialog, AccountDashboard },
     name: 'App'
   }
 </script>
